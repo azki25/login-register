@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -7,7 +8,7 @@ const { admin, db } = require('./firebase');  // Import Firebase Admin dan Fires
 const app = express();
 app.use(bodyParser.json());
 
-const SECRET_KEY = 'golapmantap';  // Ganti dengan key yang aman
+const SECRET_KEY = process.env.SECRET_KEY
 
 // Register User
 app.post('/register', async (req, res) => {
